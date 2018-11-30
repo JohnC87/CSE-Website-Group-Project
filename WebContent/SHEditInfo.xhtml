@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Fresh2U Farmers Markets</title>
+	<h:outputStylesheet name="style.css" library="css" />
+</h:head>
+<body>
+	<ui:insert>
+		<ui:include src="Header.xhtml" />
+	</ui:insert>
+	<div class="mainheading">
+		<h1>Fresh2U Farmer's Market</h1>
+	</div>
+	<h:form>
+		<br />
+		<div class="mainbody">
+			<h:form id="regform">
+				<h2>Edit Profile</h2>
+				
+				<label class="stallHolderEditInfo" for="Name">Name:</label>
+				<h:inputText class="stallHolderEditInfo"  name="Name" value="#{userBean.updateName}"
+					placeholder="#{userBean.loggedInSh.name}" />
+				
+				<label class="stallHolderEditInfo" for="stallName">Stall Name:</label>
+				<h:inputText class="stallHolderEditInfo"  name="stallName"
+					value="#{userBean.updateStallName}"
+					placeholder="#{userBean.loggedInSh.stallName}" />
+				
+				<label class="stallHolderEditInfo" for="username">Username:</label>
+				<h:inputText class="stallHolderEditInfo"  name="stallName"
+					value="#{userBean.updateUsername}"
+					placeholder="#{userBean.loggedInSh.username}" />
+				
+				<label class="stallHolderEditInfo" for="email">Email:</label>
+				<h:inputText class="stallHolderEditInfo"  name="email"
+					value="#{userBean.updateEmail}"
+					placeholder="#{userBean.loggedInSh.email}" />
+				
+				<label class="stallHolderEditInfo" for="description">Description:</label>
+				<h:inputTextarea class="stallHolderEditInfo"  name="description"
+					value="#{userBean.updateDescription}"
+					placeholder="#{userBean.loggedInSh.description}" />
+				
+				<label class="stallHolderEditInfo" for="produce">Produce:</label>
+				<h:inputTextarea class="stallHolderEditInfo"  name="produce"
+					value="#{userBean.updateProduce}"
+					placeholder="#{userBean.loggedInSh.typeOfProduce}" />
+				
+				<label class="stallHolderEditInfo" for="location">Location:</label>
+				<h:selectOneMenu class="stallHolderEditInfo"  value="#{userBean.updateLocation}" name="location">
+					<f:selectItem itemValue="Galway" itemLabel="Galway" />
+					<f:selectItem itemValue="Sligo" itemLabel="Sligo" />
+				</h:selectOneMenu>
+				
+				<label class="stallHolderEditInfo" for="websiteLink">Website Link:</label>
+				<h:inputText class="stallHolderEditInfo"  name="websiteLink" value="#{userBean.updateWebsiteLink}"
+					placeholder="#{userBean.loggedInSh.websiteLink}" />
+				
+				<h:commandButton action="#{userBean.updateData()}"
+					value="Confirm Edits" style="width: 40%; margin-left: 30%; margin-right: 30%; margin-top: 20px;"/>
+			</h:form>
+			
+			<h:form>
+			<h2>Password Change</h2>
+			<label class="stallHolderEditInfo" for="oldPassword">Old Password<br /></label>
+			<h:inputSecret class="stallHolderEditInfo" value="#{userBean.oldPassword}"
+				placeholder="Enter your old password" name="oldPassword" />
+			<label class="stallHolderEditInfo" for="password">New Password<br /></label>
+			<h:inputSecret class="stallHolderEditInfo" value="#{userBean.newPassword}"
+				placeholder="Enter a new password" name="newPassword" />
+			<h:commandButton value="Change Password"
+				action="#{userBean.changePasswordSh()}" style="width: 40%; margin-left: 30%; margin-right: 30%; margin-top: 20px;"/>
+			<h:link value="Return to Profile"
+				style="display: block; color: #486548; margin-top: 50px; margin-right: auto; margin-bottom: 50px; margin-left: auto; text-align: center;"
+				outcome="StallOwner" />
+			</h:form>
+		</div>
+	</h:form>
+</body>
+</html>

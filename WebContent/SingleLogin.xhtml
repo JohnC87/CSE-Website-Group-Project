@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Sabrina's Farmers Markets</title>
+	<h:outputStylesheet name="style.css" library="css" />
+</h:head>
+<body>
+	<ui:insert>
+		<ui:include src="Header.xhtml" />
+	</ui:insert>
+	<h:form>
+		<div class="mainheading">
+			<h1>Fresh2U Farmer's Market</h1>
+		</div>
+		<div class="mainbody">
+			<h:form id="regform">
+				<h2>Log In</h2>
+				<label
+					style="display: block; margin-top: 50px; margin-bottom: 20px; text-align: center; font-size: 20px; color: #3a3a3a"
+					for="username">Username</label>
+				<h:inputText
+					style="display: block; min-width: 200px; width: 40%; margin-left:auto; margin-right: auto"
+					value="#{userBean.username}" placeholder="Enter username"
+					name="username" />
+				<label
+					style="display: block; margin-top: 20px; margin-bottom: 20px; text-align: center; font-size: 20px; color: #3a3a3a"
+					for="password">Password</label>
+				<h:inputSecret
+					style="width: 100%; display: block; min-width: 200px; width: 40%; margin-left:auto; margin-right: auto"
+					value="#{userBean.password}" placeholder="Enter password"
+					name="password" />
+				<c:if test="#{userBean.loginFailed}">
+					<p class="warning">Login Failed. Please try again</p>
+				</c:if>
+				<b />
+				<h:commandButton
+					style="display: block; width: 40%; font-size: 20px; margin: 30px auto 30px auto; text-align: center;"
+					value="Login" action="#{userBean.login()}" />
+			</h:form>
+		</div>
+	</h:form>
+</body>
+</html>

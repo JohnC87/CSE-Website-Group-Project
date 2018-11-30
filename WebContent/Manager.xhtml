@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Fresh2U Farmers Markets</title>
+	<h:outputStylesheet name="style.css" library="css" />
+</h:head>
+<body>
+	<ui:insert>
+		<ui:include src="Header.xhtml" />
+	</ui:insert>
+
+	<div class="mainheading">
+		<h1>Fresh2U Farmer's Market</h1>
+	</div> -->
+	<div class="mainbody">
+		<p style="margin: 50px;">Welcome #{userBean.username}!</p>
+		
+		<div class="vertical-menu">
+		  <a class="active" href="Manager.xhtml" style="border-bottom: 1px solid #486548; border-top-left-radius: 20px; border-top-right-radius: 20px;">Overview</a>
+		  <a href="SiteOwnerRegistration.xhtml" style="border-bottom: 1px solid #486548">Register Site Owner</a>
+		  <a href="StallHolderRegistration.xhtml" style="border-bottom: 1px solid #486548">Register Stall Holder</a>
+		  <a href="ManageStallHolders.xhtml" style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">Manage Stall Holders</a>
+		</div>
+		
+		<div>
+			<p style="font-family:bebasNeue; font-size: 40px; margin: 50px auto 20px auto;">Overview of Fees to Site Owners</p>
+			<h:dataTable value="#{userBean.galwayFees}" var="galway" style="min-width: 50%; height: 40px; border-bottom: 1px dotted #5f865f;">
+			   
+			   	<h:column style="display: block; width: 200px; padding-top: 20px; padding-bottom: 10px">Galway Fee:  </h:column>
+				<h:column style="display: block; width: 200px; padding-top: 20px; padding-bottom: 10px">#{galway.getFeeStatus()}</h:column>
+				   
+				<h:column>
+					<h:form>
+						<h:commandButton style="display: block; width: 70px; padding-top: 10px; padding-bottom: 10px; margin-left: auto; margin-right: auto; vertical-align: middle;"
+							value="Change" action="#{userBean.changeFeeStatus(galway)}" outcome="Manager"></h:commandButton>
+					</h:form>
+				</h:column>
+			</h:dataTable>
+			<h:dataTable value="#{userBean.sligoFees}" var="sligo" style="min-width: 50%; height: 40px;">
+			   
+			   	<h:column style="display: block; width: 200px; padding-top: 20px; padding-bottom: 10px">Sligo Fee:  </h:column>
+				<h:column style="display: block; width: 200px; padding-top: 20px; padding-bottom: 10px">#{sligo.getFeeStatus()}</h:column>
+				   
+				<h:column>
+					<h:form>
+						<h:commandButton value="Change" action="#{userBean.changeFeeStatus(sligo)}" outcome="Manager" style="display: block; width: 70px; padding-top: 10px; padding-bottom: 10px; margin-left: auto; margin-right: auto; vertical-align: middle;"></h:commandButton>
+					</h:form>
+				</h:column>
+				
+			</h:dataTable>
+			<h:outputText value= "Galway Fee #{userBean.getConfirmGalwayFeePaid()}" />
+			<br />
+			<h:outputText value= "Sligo Fee #{userBean.getConfirmSligoFeePaid()}" />
+			<br />
+		</div>
+	</div>
+</body>
+</html>
